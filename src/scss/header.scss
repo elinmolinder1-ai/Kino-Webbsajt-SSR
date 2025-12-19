@@ -1,0 +1,77 @@
+.header {
+    background-color: #1A0000;
+
+    &__top {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        height: 79px;
+        object-fit: contain;
+    }
+
+    &__menu-button {
+        background-color: #1A0000;
+        color: white;
+        font-size: 0.9rem;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__nav {
+        display: none; // gömd från start
+        background-color: #0C0000;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 3;
+        flex-direction: column;
+        justify-content: center;
+
+        &--active {
+            display: flex; // visas när klassen läggs till
+        }
+
+        &-close {
+            position: absolute;
+            top: 2.5rem;
+            left: 1.9rem;
+            font-size: 0.9rem;
+            border: 0;
+            color: white;
+            cursor: pointer;
+            background-color: #0C0000;
+        }
+
+        &__logomenu{
+            width: 120px;
+            background-color: orange;
+        }
+        &-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; // centrerar listan vertikalt i nav
+            align-items: center; // centrerar hela UL horisontellt
+            padding: 0;
+            margin-top: -100px;
+        }
+
+        &-item {
+            margin: 0.1rem 0;
+            font-size: 2rem;
+            width: 260px; // fast bredd för alla items 
+            text-align: left; // vänsterjusterar texten inom den centrerade boxen
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}

@@ -2,8 +2,8 @@
   &__container {
   display: flex;
   flex-direction: column;
-  background-color: #161313;
-  color: #fff;
+  background-color: $dark-foote;
+  color: $dark-text;
   font-size: 1.1rem;
   font-family: sans-serif;
  }
@@ -22,8 +22,6 @@
     margin: 0rem;
   }
 }
-
-
 .footer {
   &__section--about  {
     width: 100%;
@@ -34,7 +32,7 @@
   }
   &__links { 
     font-size: 0.8rem;
-    color: #fff;
+    color: $dark-text;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -54,15 +52,14 @@
   } 
   &__terms {
     font-size: 0.8rem;
-    color: #fff;
+    color: $dark-text;
     list-style: none;
     padding: 0;
     margin: 0;
   }
    &__terms a {
     color: inherit;
-   text-decoration: underline;
-   
+   text-decoration: underline;  
   }
 }
 
@@ -76,7 +73,7 @@
   }
   &__info {
     font-size: 0.8rem;
-    color: #fff;
+    color: $dark-text;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -98,15 +95,13 @@
     
       }
   &__icons { 
-    color: #fff;
+    color: $dark-text;
     gap: 2rem;
      font-size: 3rem;
   }
      &__icons a {
       color: inherit;
       text-decoration: none;
-     
-      
     }
   }
 
@@ -149,8 +144,8 @@
   
 } 
 &__submit { 
-  background-color: #350000;
-  color: #fff;
+  background-color: $dark-button;
+  color: $dark-text;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 8px;

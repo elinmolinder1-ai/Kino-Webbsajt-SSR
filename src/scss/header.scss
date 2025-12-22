@@ -41,13 +41,13 @@
         animation: navfadeandscale .66s cubic-bezier(.53, .52, .04, 1.06) 0s 1 both;
 
         &--active {
-            display: flex; 
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            opacity: 1; 
+            opacity: 1;
             visibility: visible;
-            transform: scale(1); 
+            transform: scale(1);
         }
 
         &-logo {
@@ -74,14 +74,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: static;
-            margin-left: 3.6rem;
-            padding: 0;
+            justify-content: center; // centrerar vertikalt
+            height: 100vh; // tar hela höjden på sidan
+            margin: 0; // ta bort margin-left padding: 0;
         }
 
         &-item {
             margin: 0.3rem 0;
-            font-size: 2rem;
+            font-size: 1.2rem;
             width: 260px;
             text-align: left;
 

@@ -1,18 +1,22 @@
 
+export function toggleTheme() {
+  const toggleBtn = document.querySelector('#theme-toggle');
 
-const toggleBtn = document.querySelector('theme-toggle');
+  // Sparat tema vid start
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+  }
 
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
+  if (!toggleBtn) return;
 
-  // spara valet
-  const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-  localStorage.setItem('theme', theme);
-});
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
 
-const savedTheme = localStorage.getItem('theme');
+    const theme = document.body.classList.contains('dark')
+      ? 'dark'
+      : 'light';
 
-if (savedTheme === 'dark') {
-  document.body.classList.add('dark');
+    localStorage.setItem('theme', theme);
+  });
 }
-

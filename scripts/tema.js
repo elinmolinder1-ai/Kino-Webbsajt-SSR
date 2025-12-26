@@ -20,6 +20,11 @@ export function toggleTheme() {
     document.body.classList.remove('light');
     localStorage.setItem('theme', 'dark');
   });
+
 }
+
+
+
+
 
 

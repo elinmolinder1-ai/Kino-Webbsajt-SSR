@@ -69,6 +69,7 @@ body.light &__top {
 &__menu-button {
   background: transparent;
   color: $dark-text;
+ 
 }
 /* LIGHT mode */
 body.light &__menu-button { 
@@ -98,37 +99,94 @@ body.dark {
 body.light &__nav a {
   color: $dark-bg;      
 }
+
+.header {
+  &__logo-dark,  &__logo-light,
+  &__nav-logodark, &__nav-logolight {
+    height: 40px;
+    width: auto;
+  }
+
+/* default (dark): visa dark, göm light */
+&__logo-dark,
+&__nav-logodark { display: inline-grid; }
+
+&__logo-light,
+&__nav-logolight { display: none; }
+
+/* light mode: visa light, göm dark */
+body.light &__logo-dark,
+body.light &__nav-logodark { display: none; }
+
+body.light &__logo-light,
+body.light &__nav-logolight { display: inline-grid; }
 }
-/* default (dark)=> visar dark och gömmer light */
-.header__logo-light { display: none;}
-/* light: byt */
-body.light .header__logo { display: none; }
-body.light .header__logo-light { display: inline-block; }   
 
 
+}
 
-.header__nav-logo-light { display: none; }
-
-body.light .header__nav-logo  { display: none; }
-body.light .header__nav-logolight { display: inline-block; } 
+ 
 
 
 
 
-/*DARK default */
 
-.footer__container {
+
+/* FOOTER - dark mode */
+.footer__content {
   background: $dark-footer;
   color: $dark-text;
 }
-/* LIGHT mode */
+
+.footer__content a {
+  color: $dark-text;
+}
+
+/* FOOTER - light mode */
 body.light .footer__content {
-  background: $light-footer;   
+  background: $light-footer;
   color: $light-text;
 }
+
 body.light .footer__content a {
   color: $light-text;
 }
+
+/* ===== LOGO TOGGLE (works with multiple class variants) ===== */
+
+/* dark default */
+.header__logo-dark,
+.header__nav-logodark,
+.header__logo-dark,
+.header__nav-logodark {
+  display: inline-block;
+}
+
+.header__logo-light,
+.header__nav-logolight,
+.header__logo-light,
+.header__nav-logolight {
+  display: none;
+}
+
+/* light mode */
+body.light .header__logo-dark,
+body.light .header__nav-logodark,
+body.light .header__logo-dark,
+body.light .header__nav-logodark {
+  display: none;
+}
+
+body.light .header__logo-light,
+body.light .header__nav-logolight,
+body.light .header__logo-light,
+body.light .header__nav-logolight {
+  display: inline-block;
+}
+
+
+
+
 
 
 

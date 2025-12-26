@@ -48,12 +48,13 @@ body.light {
   }
 
 /* default = DARK: visa light-knappen (månen) och göm dark-knappen (solen) */
-&__theme-btn--dark { display: none; }
 &__theme-btn--light { display: inline-grid; }
+&__theme-btn--dark { display: none; }
 
 /* LIGHT mode: visa “till dark” (måne), göm “till light” (sol) */
-body.light &__theme-btn--dark { display: inline-grid; }
 body.light &__theme-btn--light { display: none; }
+body.light &__theme-btn--dark { display: inline-grid; }
+
 
 
 &__top {

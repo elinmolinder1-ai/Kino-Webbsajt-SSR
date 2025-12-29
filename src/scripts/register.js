@@ -24,7 +24,7 @@ export function toggleRegister() {
 
   submit.addEventListener('click', (event) => {
    event.preventDefault();
-   window.location.href = "mysite.html";
+   window.location.href = "member-page.html";
   })
 
 }

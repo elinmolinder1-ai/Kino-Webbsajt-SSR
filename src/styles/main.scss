@@ -31,6 +31,15 @@ $btn-text: #ffffff;
   &__title {
     margin: 0;
     font-size: 0.95rem;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    line-clamp: 2;          
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(1.2em * 2); 
   }
 
   &__actions {
@@ -40,7 +49,7 @@ $btn-text: #ffffff;
 
   &__button {
     font-size: 0.8rem;
-    padding: 6px 8px;
+    padding: 5px 20px;
     cursor: pointer;
     background-color: $btn-bg;
     color: $btn-text;

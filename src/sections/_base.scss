@@ -63,13 +63,14 @@ body {
 
 // Header Styles
 .auth-buttons {
+    cursor: pointer;
     .btn_login {
         margin-left: 10px;
         font-size: 1.5rem;
         font-weight: bold;
     }
     
-    .btn_join {
+    .header__login-btn {
         margin-left: 10px;
         font-size: 1.3rem;
         font-weight: bold;

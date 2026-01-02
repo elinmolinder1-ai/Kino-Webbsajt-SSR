@@ -3,13 +3,42 @@ import { toggleMenu } from './menu.js';
 import { toggleTheme, closeBanner } from './tema.js';
 import { movieCarousel } from './carousel.js';
 import { scrollRow, changeHeroSlide } from './movieEventSlider.js';
+import { toggleLogin } from './login.js';
+import { toggleRegister } from './register.js';
+import { openTrailer } from './trailermodal.js'; 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    toggleLogin();
+    toggleRegister();
     toggleMenu();
-    movieCarousel();
     closeBanner();
     toggleTheme();
-    
+
+    // Trailer Listener
+    document.addEventListener('click', (e) => {
+        const trailerBtn = e.target.closest('.trailer-btn');
+    if (trailerBtn) {
+        const trailerUrl = trailerBtn.getAttribute('data-trailer');
+        
+        if (trailerUrl) {
+            let videoId = '';
+            
+            // Robust extraction for various YouTube URL formats
+            if (trailerUrl.includes('v=')) {
+                videoId = trailerUrl.split('v=')[1].split('&')[0];
+            } else if (trailerUrl.includes('youtu.be/')) {
+                videoId = trailerUrl.split('youtu.be/')[1].split('?')[0];
+            }
+
+            if (videoId) {
+                openTrailer(videoId);
+            } else {
+                console.error("Could not parse Video ID from URL:", trailerUrl);
+            }
+        }
+    }
+    }, { passive: true });
+
     try {
         await movieCarousel();
         changeHeroSlide(0);
@@ -36,5 +65,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error("Carousel failed to load:", error);
     }
-        
 });

@@ -1,26 +1,23 @@
-import { fetchMovies } from "./api.js"; // Ensure the .js extension is present
+import { fetchMovies } from "./api.js";
 
 export async function movieCarousel() {
     const currentTrack = document.getElementById('currentMoviesTrack');
     const upcomingTrack = document.getElementById('comingSoonTrack');
     const eventsTrack = document.getElementById('eventsTrack');
     const heroInner = document.querySelector('.carousel_inner');
-    const indicatorsContainer = document.querySelector('.carousel_indicators');
+    const daySelector = document.getElementById('dayFilter'); 
 
     try {
-
         const movieData = await fetchMovies();
 
-        // Check if data exists to avoid errors
         if (!movieData || !Array.isArray(movieData)) {
             console.error("No movie data found");
             return;
         }
 
-        // Category
+
         const getAgeCategory = (certificate) => {
             if (!certificate) return { category: null, class: null };
-            
             if (certificate === 'A' || certificate === 'R') {
                 return { category: 'Adult', class: 'adults-only' };
             } else if (certificate === 'U' || certificate === 'UA' || certificate === 'PG-13') {
@@ -30,10 +27,10 @@ export async function movieCarousel() {
             }
         };
 
+  
         const heroMovies = [...movieData].sort(() => Math.random() - 0.5).slice(0, 6);
         heroInner.innerHTML = heroMovies.map((movie, index) => {
             const { category, class: categoryClass } = getAgeCategory(movie.Certificate);
-            
             return `
             <div class="carousel_slide ${index === 0 ? 'active' : ''}" style="background-image: url('${movie.Poster_Link}')">
                 <div class="slide_content">
@@ -46,18 +43,20 @@ export async function movieCarousel() {
             </div>`;
         }).join('');
 
+       
         const generateMovieHTML = (data, showDays, prefix) => {
-            const days = ["Idag", "Imorgon", "Fredag 19/12", "Lördag 20/12", "Söndag 21/12"];
+            //const days = ["Idag", "Imorgon", "Fredag 19/12", "Lördag 20/12", "Söndag 21/12"];
             return data.map((movie, index) => {
                 const { category, class: categoryClass } = getAgeCategory(movie.Certificate);
-                
+                //${showDays ? `<h3 class="movie-day-label">${days[index] || ''}</h3>` : ''}
                 return `
                     <div class="movie-wrapper">
-                        ${showDays ? `<h3 class="movie-day-label">${days[index] || ''}</h3>` : ''}
                         <div class="movie-card">
                             <img src="${movie.Poster_Link}" alt="${movie.Series_Title}">
                             <div class="card-footer">
-                                <span><i class="fas fa-play"></i> Trailer</span>
+                                <span class="trailer-btn" data-trailer="${movie.Trailer}">
+                                    <i class="fas fa-play"></i> Trailer
+                                </span>
                                 <span class="details-btn" data-prefix="${prefix}" data-id="${movie.id}">Detaljer ▼</span>
                             </div>
                             <div class="movie-details-content" id="${prefix}-details-${movie.id}" style="display: none;">
@@ -71,14 +70,39 @@ export async function movieCarousel() {
                     </div>`}).join('');
         };
 
-        // SHUFFLE & RENDER ROWS
-        const shuffledCurrent = [...movieData].sort(() => Math.random() - 0.5).slice(0, 5);
-        const shuffledUpcoming = [...movieData].sort(() => Math.random() - 0.5).slice(5, 10); // Slice different movies for variety
+        // FILTER
+        const updateCurrentMovies = (filterDay) => {
+            // If movieData has a day property, filter by it. 
+            // Otherwise, shuffle to provide dynamic visual feedback.
+            const filtered = [...movieData].sort(() => Math.random() - 0.5).slice(0, 5);
+            
+            if (currentTrack) {
+                currentTrack.innerHTML = generateMovieHTML(filtered, true, 'current');
+                setupDetailsListeners(); // Re-initialize detail buttons
+            }
+        };
 
-        if (currentTrack) currentTrack.innerHTML = generateMovieHTML(shuffledCurrent, true, 'current');
+        //  DAY SELECTOR LISTENER
+        if (daySelector) {
+            daySelector.addEventListener('click', (e) => {
+                const btn = e.target.closest('.day-btn');
+                if (!btn) return;
+
+                // Update Button UI
+                document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update List
+                updateCurrentMovies(btn.dataset.day);
+            });
+        }
+
+       
+        updateCurrentMovies("Idag"); // Load initial list
+
+        const shuffledUpcoming = [...movieData].sort(() => Math.random() - 0.5).slice(5, 10);
         if (upcomingTrack) upcomingTrack.innerHTML = generateMovieHTML(shuffledUpcoming, false, 'upcoming');
 
-        //EVENTS
         if (eventsTrack) {
             const shuffledEvents = [...movieData].sort(() => Math.random() - 0.5).slice(0, 5);
             eventsTrack.innerHTML = shuffledEvents.map(movie => `
@@ -87,7 +111,6 @@ export async function movieCarousel() {
                 </div>`).join('');
         }
 
-        // Initialize listeners once HTML is injected
         setupDetailsListeners();
 
     } catch (error) {
@@ -95,7 +118,7 @@ export async function movieCarousel() {
     }
 }
 
-// EVENT LISTENERS
+
 function setupDetailsListeners() {
     document.removeEventListener('click', handleDetailClick);
     document.addEventListener('click', handleDetailClick);

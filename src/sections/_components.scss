@@ -286,3 +286,32 @@
         }
     }
 }
+.day-selector {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.day-btn {
+    background: $dark-bg;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    border: none;
+    color: $text-white;
+    font-weight: bold;
+    
+}
+
+.day-btn.active {
+   
+    color: $text-white;
+    border:none;
+    background-color: $toggle-off;
+}
+
+.day-btn:hover:not(.active) {
+    background: $dark-button;
+}

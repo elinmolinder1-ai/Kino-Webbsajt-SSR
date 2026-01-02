@@ -1,9 +1,10 @@
-
 export function scrollRow(id, direction) {
     const el = document.getElementById(id);
     if (el) {
-        // Multiplies scroll distance
-        el.scrollBy({ left: 500 * direction, behavior: 'smooth' });
+        // Use requestAnimationFrame to ensure we aren't interrupting a layout cycle
+        requestAnimationFrame(() => {
+            el.scrollBy({ left: 500 * direction, behavior: 'smooth' });
+        });
     }
 }
 
@@ -16,22 +17,30 @@ export function changeHeroSlide(direction = 1) {
     
     if (slides.length === 0) return;
     
-    slides[currentSlideIndex].classList.remove('active');
-    if (indicators[currentSlideIndex]) {
-        indicators[currentSlideIndex].classList.remove('active');
-    }
-    
-    // Calculate new index with wrap-around
-    currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
-    
-    // Add active classes to new slide
-    slides[currentSlideIndex].classList.add('active');
-    if (indicators[currentSlideIndex]) {
-        indicators[currentSlideIndex].classList.add('active');
-    }
+    // Batch all DOM changes inside a single frame
+    requestAnimationFrame(() => {
+        slides[currentSlideIndex].classList.remove('active');
+        if (indicators[currentSlideIndex]) {
+            indicators[currentSlideIndex].classList.remove('active');
+        }
+        
+        currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
+        
+        slides[currentSlideIndex].classList.add('active');
+        if (indicators[currentSlideIndex]) {
+            indicators[currentSlideIndex].classList.add('active');
+        }
+    });
 }
 
 // Auto-timer for Slider
-if (document.querySelector('.carousel')) {
-    setInterval(() => changeHeroSlide(1), 8000); // 8 seconds
+// Check for carousel existence once and store it
+const carouselExists = document.querySelector('.carousel');
+if (carouselExists) {
+    setInterval(() => {
+        // Only trigger if the page is actually visible to the user
+        if (!document.hidden) {
+            changeHeroSlide(1);
+        }
+    }, 8000); 
 }

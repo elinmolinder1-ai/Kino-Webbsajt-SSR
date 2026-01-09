@@ -15,7 +15,7 @@ body {
     // LIGHT MODE
     &.light {
         background: #ededed;
-        color: $dark-bg;
+        color: #000000;
         
         .header__theme-btn--dark {
             display: inline-grid;
@@ -35,8 +35,8 @@ body {
 
 // Notification Bar
 #promoBanner {
-    background-color: $banner;
-    color: $card-bg;
+    background-color: var(--banner);
+    color: var(--card-bg);
     padding: 12px;
     text-align: center;
     font-size: 14px;
@@ -63,14 +63,13 @@ body {
 
 // Header Styles
 .auth-buttons {
-    cursor: pointer;
     .btn_login {
         margin-left: 10px;
         font-size: 1.5rem;
         font-weight: bold;
     }
     
-    .header__login-btn {
+    .btn_join {
         margin-left: 10px;
         font-size: 1.3rem;
         font-weight: bold;

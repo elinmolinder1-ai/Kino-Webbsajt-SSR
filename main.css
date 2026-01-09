@@ -406,7 +406,6 @@ body.light .header__nav-logolight {
   background-color: #1A0000;
   justify-content: center;
   align-items: center;
-  z-index: 100;
 }
 .register__modal--active {
   display: flex;
@@ -461,7 +460,6 @@ body.light .header__nav-logolight {
   background-color: #1A0000;
   justify-content: center;
   align-items: center;
-  z-index: 100;
 }
 .login__modal--active {
   display: flex;
@@ -866,152 +864,6 @@ body {
   .bistro-products__description {
     font-size: 1rem;
   }
-}
-
-.carousel {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  height: 450px;
-  margin: 20px auto;
-  overflow: hidden;
-  border: 5px solid #e0e0e0;
-  border-radius: 10px;
-}
-.carousel_slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.8s;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px;
-  pointer-events: none;
-}
-.carousel_slide.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.carousel_control {
-  background: #1A0000;
-  color: #e0e0e0;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-.carousel_controls_bottom {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  gap: 10px;
-  z-index: 1;
-}
-.carousel_controls_bottom i {
-  padding-top: 8px;
-  font-size: 12px;
-  cursor: pointer;
-  width: 24px;
-  height: 18px;
-}
-
-.carousel_controls_bottom {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  gap: 10px;
-  z-index: 1;
-}
-
-.day-btn {
-  cursor: pointer;
-}
-
-.carousel_nav_btn {
-  background: #1A0000;
-  color: #e0e0e0;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  z-index: 10;
-}
-.carousel_nav_btn:hover {
-  background: #1A0000;
-}
-.carousel_nav_btn i {
-  font-size: 14px;
-}
-
-.movies_carousel {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.movies_carousel__track {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
-.movies_carousel__track::-webkit-scrollbar {
-  display: none;
-}
-.movies_carousel__track {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.day-selector {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  justify-content: space-around;
-  align-items: center;
-}
-.day-selector .day-btn {
-  background: transparent;
-  color: #e0e0e0;
-  border: 1px solid #e0e0e0;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.day-selector .day-btn.active, .day-selector .day-btn:hover {
-  background: #e0e0e0;
-  color: #1A0000;
-}
-
-.movie-details-info {
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #e0e0e0;
-  font-size: 0.8rem;
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  width: 100%;
-  z-index: 5;
-}
-
-.movies-carousel__card {
-  position: relative;
-}
-
-.details-btnn {
-  font-size: larger;
 }
 
 .movies-carousel__track {

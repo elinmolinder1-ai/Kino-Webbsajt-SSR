@@ -9,6 +9,7 @@
     margin: 20px auto;
     overflow: hidden;
     border: 5px solid $text-white;
+    border: 5px solid $text-white;
     border-radius: 10px;
     
     &_slide {
@@ -32,6 +33,7 @@
     
     &_control {
         background: $dark-bg;
+        color: $text-white;
         color: $text-white;
         border: none;
         padding: 10px;

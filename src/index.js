@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // only shows 10 cards on landingpage, otherwise it will load almost infinite titles with our API
 
-    renderMovieList(currentTrack, current.slice(0, 10));
+    renderMovieList(currentTrack, current.slice(0, 20));
     renderMovieList(comingSoonTrack, upcoming.slice(0, 10));
     renderMovieList(eventsTrack, current.slice(0, 10)); // placeholder until we get API to show upcoming events, can change current to events
 

@@ -22,6 +22,7 @@ export async function movieCarousel(movies) {
             currentSlide = (i + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
         };
+        
         if (prevBtn && nextBtn) {
             prevBtn.onclick = () => showSlide(currentSlide - 1);
             nextBtn.onclick = () => showSlide(currentSlide + 1);
@@ -71,7 +72,7 @@ export async function movieCarousel(movies) {
     setupTrackNavigation();
 }
 
-// Detail Toggle
+// Detail Toggle - This should be OUTSIDE the movieCarousel function
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('.details-btn');
     if (!btn) return;

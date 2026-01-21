@@ -31,6 +31,8 @@
     "braces": "^3.0.3",
     "chokidar": "^4.0.3",
     "detect-libc": "^1.0.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.4",
     "fill-range": "^7.1.1",
     "immutable": "^5.1.4",
     "is-extglob": "^2.1.1",

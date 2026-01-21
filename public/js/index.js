@@ -22,7 +22,7 @@ toggleTheme();
 
 import { fetchMovies } from "../../scripts/api.js";
 import { renderMovieList } from "../../scripts/createcard.js";
-import { openTrailer } from "../../scripts/trailermodal.js"; 
+//import { openTrailer } from "../../scripts/trailermodal.js"; 
 import { movieCarousel } from "../../scripts/carousel.js"; 
 
 

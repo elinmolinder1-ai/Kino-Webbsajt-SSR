@@ -1,11 +1,12 @@
 <!-- Page for all movies -->
-<div class="movie-card ">
+
+  <div class="movie-card movie-card--special">
   <ul>
 
     {{#each movies }}
     <li>
       <a href="/movies/{{ this.id }}">
-        <h3 class="movie-card__title">{{ this.title }}
+       <h1 class="movie-card__title">{{ this.title }}
           {{ movie.image }}
       </a>
     </li>

@@ -8,7 +8,7 @@
     <title>KINO _ Movie Theater</title>
     <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font_awesome/6.4.0/css/all.min.css"> -->
 
-    <!--<link rel="stylesheet" href="main.css">-->
+    <link rel="stylesheet" href="/css/main.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -18,11 +18,11 @@
     <div class="container">
         <header class="header">
 
-            <img class="header__logo" src="/assets/logo1.png" alt="Logga - Kino bio">
+            <img class="header__logo" src="/images/logo2.png" alt="Logga - Kino bio">
             <div class="header__top">
                 <button class="header__menu-button" aria-label="Menu">☰ MENY</button>
                 <div class="header__auth">
-                    <button class="header__login-btn" aria-label="Logga in">JOIN / LOGIN</button>
+                    <!-- <button class="header__login-btn" aria-label="Logga in">JOIN / LOGIN</button> -->
                     <button class="header__logout-btn" aria-label="Logga in">LOGOUT</button>
 
                 </div>
@@ -30,49 +30,46 @@
         </header>
     </div>
 
-    
-        <section  class="members__offers">
-            <h2 class="members__offers--title">Member page</h2>
-            <div class="members__offers--images">
-            <img src="/Assets/offers.png">
-            <img src="/Assets/offers.png">
-            <img src="/Assets/offers.png">
-            <img src="/Assets/offers.png">
-       </div>
+
+    <section class="members__offers">
+        <h2 class="members__offers--title">Member page</h2>
+        <div class="members__offers--images">
+            <img src="/images/offers.png">
+            <img src="/images/offers.png"><img src="/images/offers.png"><img src="/images/offers.png">
+        </div>
     </section>
 
-        <article class="review">
-            <h3 class="review__title">Review form</h3>
+    <article class="review">
+        <h3 class="review__title">Review form</h3>
 
-            <form class="review__form" id="reviewForm">
-                <div class="review__field">
-                    <label class="review__label" for="movieTitle">Movie</label>
-                    <select class="review__input" id="movieTitle" name="movieTitle" required>
-                        <option value=" selected ">Choose a movie</option>
-                        <option value="Neon Dreams">Neon Dreams</option>
-                        <option value="The Last Sunset">The Last Sunset</option>
-                        <option value="Echoes of Silence">Echoes of Silence</option>
-                    </select>
-                </div>
+        <form class="review__form" id="reviewForm">
+            <div class="review__field">
+                <label class="review__label" for="movieTitle">Movie</label>
+                <select class="review__input" id="movieTitle" name="movieTitle" required>
+                    <option value=" selected ">Choose a movie</option>
+                    <option value="Neon Dreams">Neon Dreams</option>
+                    <option value="The Last Sunset">The Last Sunset</option>
+                    <option value="Echoes of Silence">Echoes of Silence</option>
+                </select>
+            </div>
 
-                <div class="review__field">
-                    <label class="review__label" for="rating">Rating (1–5)</label>
-                    <input class="review__input" id="rating" name="rating" type="number" min="1" max="5" required />
-                </div>
+            <div class="review__field">
+                <label class="review__label" for="rating">Rating (1–5)</label>
+                <input class="review__input" id="rating" name="rating" type="number" min="1" max="5" required />
+            </div>
 
-                <div class="review__field">
-                    <label class="review__label" for="reviewText">Your review</label>
-                    <textarea class="review__input review__textarea" id="reviewText" name="reviewText" rows="4"
-                        minlength="10" maxlength="500" required
-                        placeholder="Write at least 10 characters..."></textarea>
-                </div>
+            <div class="review__field">
+                <label class="review__label" for="reviewText">Your review</label>
+                <textarea class="review__input review__textarea" id="reviewText" name="reviewText" rows="4"
+                    minlength="10" maxlength="500" required placeholder="Write at least 10 characters..."></textarea>
+            </div>
 
-                <div class="review__actions">
-                    <button class="review__btn" type="submit">Submit review</button>
-                </div>
-            </form>
+            <div class="review__actions">
+                <button class="review__btn" type="submit">Submit review</button>
+            </div>
+        </form>
 
-        </article>
+    </article>
 
     </section>
 
@@ -141,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-            
+
             </section>
         </section>
 

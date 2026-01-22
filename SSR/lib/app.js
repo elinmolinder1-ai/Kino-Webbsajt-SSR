@@ -17,6 +17,11 @@ export const MENU = [
   { label: "Företag", id: "business", link: "/business" }
 ];
 
+//Footer-array
+export const FOOTER = [
+  {label: "Jobba hos oss", id: "work", link: "/"},
+]
+
 
 export default function initApp(api) {
   const app = express();
@@ -35,13 +40,13 @@ export default function initApp(api) {
   //Path to all-movies handlebar
   app.get("/movies", async (req, res) => {
     const movies = await api.loadMovies();
-    res.render("all-movies", { movies, menu: MENU });
+    res.render("all-movies", { movies, menu: MENU, footer: FOOTER});
   });
 
   //Route to a movie
   app.get("/movies/:movieId", async (req, res) => {
     const movie = await api.loadMovie(req.params.movieId);
-    res.render("movie", { movie, menu: MENU });
+    res.render("movie", { movie, menu: MENU, footer: FOOTER });
   });
 
 

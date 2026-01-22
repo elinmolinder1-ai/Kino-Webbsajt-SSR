@@ -4,23 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Kino Bio</title>
-
-  <!-- Din egen CSS från public/css -->
   <link rel="stylesheet" href="/css/main.css">
 </head>
 
+<!--Main layout page -->
 <body>
 
-  <!-- Header-partialen -->
   {{> header}}
-
-  <!-- Sidans innehåll -->
+  <h1>The Movie Site</h1>
+ 
   <main class="content">
     {{{body}}}
   </main>
   {{> footer}}
-  <!-- Din egen JS från public/js -->
-  <script type="module" src="/js/index.js"></script>
+  
+<script type="module" src="/js/index.js"></script>
 </body>
 
 </html>

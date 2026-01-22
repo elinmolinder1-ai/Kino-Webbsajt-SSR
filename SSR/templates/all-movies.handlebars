@@ -1,8 +1,13 @@
+<!-- Page for all movies -->
 <div class="movie-card ">
-  <h3 class="movie-card__title">{{attributes.title}}</h3>
+  <ul>
 
-  {{#if attributes.image}}
-    <img src="{{attributes.image.url}}" alt="Poster for {{attributes.title}}" class="movie-card__image">
-  {{/if}}
-  <a href="/movies/{{id}}" class="movie-card__link">Mer info</a>
-</div>
+    {{#each movies }}
+    <li>
+      <a href="/movies/{{ this.id }}">
+        <h3 class="movie-card__title">{{ this.title }}
+          {{ movie.image }}
+      </a>
+    </li>
+    {{/each}}
+  </ul>  <a href="index.html" class="movie-card__link">Tillbaka till startsida</a>

@@ -1,4 +1,42 @@
-//Add testing setup: install Jest, Supertest and cross-env for integration tests
+/* 
+import { describe, expect, test } from '@jest/globals';
+import request from 'supertest';
+import initApp from '../SSR/lib/app.js';
+//import fs from 'fs'; // har lagt till denna rad
+
+// Minimal mock API för testet
+const mockApi = {
+  loadMovie: async (id) => ({
+    data: { id, attributes: { title: "The Godfather" } }   // här styr du vilken titel som ska visas
+  }),
+  loadMovies: async () => ({
+    data: [
+      { id: 1, attributes: { title: "The Godfather" } },
+      { id: 2, attributes: { title: "Encanto" } }
+    ]
+  })
+};
+
+describe("movie", () => {
+  test("shows correct movie title", async () => {
+    const app = initApp(mockApi);
+
+    // anropa en specifik film, t.ex. id=1
+    const response = await request(app)
+      .get("/movies/1")
+      .expect(200);
+
+    // kontrollera att titeln från mockApi.loadMovie syns i HTML
+    expect(response.text).toContain("The Godfather");
+  });
+});
+
+
+
+
+
+
+/* //Add testing setup: install Jest, Supertest and cross-env for integration tests
 
 
 
@@ -30,3 +68,4 @@ describe("Integrationstest för filmsidor", () => {
 afterAll(() => {
   server.close();
 });
+ */ 

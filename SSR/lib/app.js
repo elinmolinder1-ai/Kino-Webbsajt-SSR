@@ -1,5 +1,3 @@
-console.log(">>> app.js loaded");
-
 //Add homepage and movie routes, serve static files
 
 import express from "express";
@@ -25,6 +23,7 @@ export const FOOTER = [
 ]
 
 export default function initApp(api) {
+
   const app = express();
 
   // Configure Handlebars as the view engine
@@ -32,25 +31,22 @@ export default function initApp(api) {
   app.set("view engine", "handlebars");
   app.set("views", path.join(process.cwd(), "SSR", "templates"));
 
-  app.use((req, res, next) => {
-    console.log("Incoming request:", req.method, req.url);
-    next();
-  });
-
-
   // Serve index.html from /public as the homepage
   app.get("/", (req, res) => {
     res.sendFile("index.html", {
       root: path.join(process.cwd(), "public")
     });
   });
-  // Route that renders all-movies.handlebars with movie data
-  app.get("/movies", async (req, res) => {
+
+
+  // Viktigt: denna först
+   app.get("/movies", async (req, res) => {
+
     const movies = await api.loadMovies();
     res.render("all-movies", { movies, menu: MENU, footer: FOOTER });
   });
 
-  // Route that renders a single movie view based on movieId
+  // Sedan den dynamiska
   app.get("/movies/:movieId", async (req, res) => {
     const movie = await api.loadMovie(req.params.movieId);
     res.render("movie", { movie, menu: MENU, footer: FOOTER });
@@ -58,11 +54,10 @@ export default function initApp(api) {
 
   // Route that renders the member-page view
   app.get("/member", (req, res) => {
-    res.sendFile("member-page.html", { root: path.join(process.cwd(), "public")
+    res.sendFile("member-page.html", {
+      root: path.join(process.cwd(), "public")
     });
   });
-
-
 
   // Serve static files from /public and /scripts
   app.use(express.static("public"));

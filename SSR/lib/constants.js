@@ -41,7 +41,7 @@ export const FOOTER_SOCIAL = [
   { icon: "fa-instagram", label: "Instagram", link: "#" }
 ];
 export const FOOTER_NEWS = {
-  title: "Nyhetsbrev",
+  label: "Nyhetsbrev",
   placeholder: "you@example.com",
   buttonText: "Anmäl dig"
 };

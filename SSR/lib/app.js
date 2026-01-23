@@ -38,14 +38,20 @@ export default function initApp(api) {
     });
   });
 
+  //show all movies, makes code work with both strapi format and flattened arrays
 app.get("/movies", async (req, res) => {
   const payload = await api.loadMovies();
   const arr = payload?.data ?? payload;         
+  
+  //flatten each movie object. If array exists, use that one, if not use empty array
+  //Loop through each movie object and return a new object
   const movies = (arr ?? []).map(m => ({
-   
+    
+    //keep the id and spread out all fields from m.attribute if it exists.
     id: m.id,
     ...(m.attributes ?? m), 
   }));
+
   res.render("all-movies", { movies, menu: MENU, footer: FOOTER });
 });
 

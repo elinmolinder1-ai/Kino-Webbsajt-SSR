@@ -18,12 +18,13 @@ const mockApi = {
 
 // Test that checks if the movie page shows the correct title
 describe("Movie page", () => {
-  test("shows correct movie title", async () => {
+  test("Shows correct movie title", async () => {
     
     // Start the Express app using the fake API
     const app = initApp(mockApi);
 
-    // Make a request to the movie page /movies/12 // Supertest acts like a browser and calls the route
+    // Make a request to the movie page /movies/12.
+    // Supertest acts like a browser and calls the route
     const response = await request(app)
       .get("/movies/12")  
       .expect(200); // We expect the page to load successfully

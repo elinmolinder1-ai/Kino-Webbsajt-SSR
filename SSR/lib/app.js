@@ -38,34 +38,18 @@ export default function initApp(api) {
     });
   });
 
-
-  // Viktigt: denna först
-   app.get("/movies", async (req, res) => {
-
-    const movies = await api.loadMovies();
-    res.render("all-movies", { movies, menu: MENU, footer: FOOTER });
-  });
-
-  /*Route to a movie
-  app.get("/movies/:movieId", async (req, res) => {
-    const movie = await api.loadMovie(req.params.movieId);
-    res.render("movie", { movie, menu: MENU, footer: FOOTER });
-  });
-*/
-
 app.get("/movies", async (req, res) => {
   const payload = await api.loadMovies();
-  const arr = payload?.data ?? payload;          // {data:[...]} eller [...]
+  const arr = payload?.data ?? payload;         
   const movies = (arr ?? []).map(m => ({
    
     id: m.id,
-    ...(m.attributes ?? m),    // Strapi-objekt eller flattenat
+    ...(m.attributes ?? m), 
   }));
-  res.render("all-movies", { movies });
+  res.render("all-movies", { movies, menu: MENU, footer: FOOTER });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
-
 
   const payload = await api.loadMovie(req.params.movieId);
   const m = payload?.data ?? payload;
@@ -73,7 +57,7 @@ app.get("/movies/:movieId", async (req, res) => {
     id: m.id,
     ...(m.attributes ?? m),
   };
-  res.render("movie", { movie });
+  res.render("movie", { movie, menu: MENU });
 });
 
   // Serve static files from /public and /scripts

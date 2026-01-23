@@ -9,7 +9,7 @@ export const MENU = [
   { label: "Café & Bistro", id: "cafe", link: "/#cafe-bistro" },
   { label: "Event", id: "events", link: "/events" },
   { label: "Kundservice", id: "support", link: "/support" },
-  { label: "Mina sidor", id: "profile", link: "/member-page" },
+  { label: "Mina sidor", id: "profile", link: "member-page.html" },
   { label: "Företag", id: "business", link: "/business" }
 ];
 

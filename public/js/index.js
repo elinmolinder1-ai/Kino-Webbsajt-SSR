@@ -1,4 +1,5 @@
 //import "./sections/main.scss";
+console.log(">>> Client-side JS loaded");
 
 import { initMemberPage } from '../../scripts/member-page.js';
 

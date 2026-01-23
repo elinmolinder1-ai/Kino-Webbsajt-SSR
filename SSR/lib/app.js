@@ -4,7 +4,7 @@ import express from "express";
 import { engine } from "express-handlebars";
 import path from "path";
 
-// Meny-array
+//Navigation menu items 
 export const MENU = [
   { label: "Startsida", id: "movies", link: "/" },
   { label: "Alla filmer", id: "movies", link: "/movies" },
@@ -17,31 +17,39 @@ export const MENU = [
   { label: "Företag", id: "business", link: "/business" }
 ];
 
+//Footer-links displayed at the bottom of the page
+export const FOOTER = [
+  { label: "Jobba hos oss", id: "work", link: "/" },
+]
 
 export default function initApp(api) {
+
   const app = express();
 
+  // Configure Handlebars as the view engine
   app.engine("handlebars", engine());
   app.set("view engine", "handlebars");
   app.set("views", path.join(process.cwd(), "SSR", "templates"));
 
-  //Get index.html to be the "home page"
+  // Serve index.html from /public as the homepage
   app.get("/", (req, res) => {
     res.sendFile("index.html", {
       root: path.join(process.cwd(), "public")
     });
   });
 
-  //Path to all-movies handlebar
-  app.get("/movies", async (req, res) => {
+
+  // Viktigt: denna först
+   app.get("/movies", async (req, res) => {
+
     const movies = await api.loadMovies();
-    res.render("all-movies", { movies, menu: MENU });
+    res.render("all-movies", { movies, menu: MENU, footer: FOOTER });
   });
 
   /*Route to a movie
   app.get("/movies/:movieId", async (req, res) => {
     const movie = await api.loadMovie(req.params.movieId);
-    res.render("movie", { movie, menu: MENU });
+    res.render("movie", { movie, menu: MENU, footer: FOOTER });
   });
 */
 
@@ -68,13 +76,16 @@ app.get("/movies/:movieId", async (req, res) => {
   res.render("movie", { movie });
 });
 
-  //Path to my static files, in public
+  // Serve static files from /public and /scripts
   app.use(express.static("public"));
   app.use("/scripts", express.static("./scripts"));
 
 
   return app;
 }
+
+
+
 
 
 

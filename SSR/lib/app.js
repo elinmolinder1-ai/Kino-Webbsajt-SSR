@@ -46,18 +46,35 @@ export default function initApp(api) {
     res.render("all-movies", { movies, menu: MENU, footer: FOOTER });
   });
 
-  // Sedan den dynamiska
+  /*Route to a movie
   app.get("/movies/:movieId", async (req, res) => {
     const movie = await api.loadMovie(req.params.movieId);
     res.render("movie", { movie, menu: MENU, footer: FOOTER });
   });
+*/
 
-  // Route that renders the member-page view
-  app.get("/member", (req, res) => {
-    res.sendFile("member-page.html", {
-      root: path.join(process.cwd(), "public")
-    });
-  });
+app.get("/movies", async (req, res) => {
+  const payload = await api.loadMovies();
+  const arr = payload?.data ?? payload;          // {data:[...]} eller [...]
+  const movies = (arr ?? []).map(m => ({
+   
+    id: m.id,
+    ...(m.attributes ?? m),    // Strapi-objekt eller flattenat
+  }));
+  res.render("all-movies", { movies });
+});
+
+app.get("/movies/:movieId", async (req, res) => {
+
+
+  const payload = await api.loadMovie(req.params.movieId);
+  const m = payload?.data ?? payload;
+  const movie = {
+    id: m.id,
+    ...(m.attributes ?? m),
+  };
+  res.render("movie", { movie });
+});
 
   // Serve static files from /public and /scripts
   app.use(express.static("public"));
